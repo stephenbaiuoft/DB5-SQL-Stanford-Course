@@ -4,6 +4,20 @@ https://community.modeanalytics.com/sql/tutorial/sql-case/
 
 
 /*
+Write a query that calculates the combined weight of all underclass players (FR/SO) 
+in California as well as the combined weight of all upperclass players (JR/SR) in California.
+*/
+
+SELECT
+    CASE WHEN year IN ('FR', 'SO') THEN 'underclass'
+        ELSE 'upperclass' END,
+    SUM(weight) as combined_weight
+  FROM benn.college_football_players
+  WHERE state = 'CA'
+GROUP BY 1 
+ 
+
+/*
 Write a query that counts the number of 300lb+ players for each of the following regions:
  West Coast (CA, OR, WA), Texas, and Other (Everywhere else).
 */
